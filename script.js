@@ -22,8 +22,6 @@ class BinaryTree {
 
         // remove duplicates
         arr = [...new Set(arr)];
-        console.log(arr);
-
         return arr;
     }
 
@@ -33,7 +31,6 @@ class BinaryTree {
         // and removal of duplicates here
         this.sortArr(arr);
         let halfIndex = Math.floor(arr.length / 2);
-        console.log(halfIndex);
         let node = new Node(arr[halfIndex]);
         node.left = this.buildTree(arr.slice(0, halfIndex));
         node.right = this.buildTree(arr.slice(halfIndex + 1));
@@ -59,6 +56,16 @@ class BinaryTree {
         this.root = this.buildTree(arr);
         // * advantage of this sample case is that all the values in the array are unique
     }
+
+    find(value) {
+        let foundIt;
+        arr.forEach((num) => {
+            foundIt = arr.indexOf(value);
+            foundIt >= 0
+                ? console.log(`>>>>>>>>> Found ${value} at position ${foundIt}`)
+                : console.log(`Did not find ${value} in the tree.`);
+        });
+    }
 }
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -82,7 +89,13 @@ newTree.insert(77);
 prettyPrint(newTree.root);
 newTree.insert(5);
 prettyPrint(newTree.root);
-newTree.delete(77);
+// newTree.delete(77);
+// prettyPrint(newTree.root);
+newTree.find(5333333);
+prettyPrint(newTree.root);
+newTree.find(77);
+prettyPrint(newTree.root);
+newTree.find(5333333);
 prettyPrint(newTree.root);
 
 // 1) get the root
